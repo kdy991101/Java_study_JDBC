@@ -3,39 +3,41 @@ package com.iu.countries;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import com.iu.util.DBConnector;
 
 public class CountriesDAO {
 
-	public void getList() throws Exception {
-		
+	public ArrayList<CountriesDTO> getList() throws Exception {
+		ArrayList<CountriesDTO> ar = new ArrayList<>();
 		//1.DB연결
 		Connection con = DBConnector.getConnection();
-		
 		//2.sql작성
 		String sql = "SELECT * FROM COUNTRIES";
-		
 		//3.미리보내기
 		PreparedStatement st = con.prepareStatement(sql);
-		
 		//4.전송 후 결과 처리
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			String id = rs.getString("Country_id");
-			String name = rs.getString("Country_name");
-			int rid = rs.getInt("region_id");
-			System.out.println(id);
-			System.out.println(name);
-			System.out.println(rid);
+			CountriesDTO countriesDTO = new CountriesDTO();
+			countriesDTO.setCountry_id(rs.getString("country_id"));
+			countriesDTO.setCountry_name(rs.getNString("country_name"));
+			countriesDTO.setRegion_id(rs.getInt("region_id"));
+			ar.add(countriesDTO);
 		}
+		
 		DBConnector.disConnect(rs, st, con);//6.자원해제
-		}
+		return ar;
+		
+	}
 	
 	//countries_id
 //	public void getDetail() throw Exception{
 	
-	public void getDetail(String country_id) throws Exception{
+	public CountriesDTO getDetail(String country_id) throws Exception{
+		CountriesDTO countriesDTO = null;
 		Connection con = DBConnector.getConnection();
 		
 		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_ID = ?";
@@ -46,12 +48,13 @@ public class CountriesDAO {
 		
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			String id = rs.getString("country_id");
-			String name = rs.getString("country_name");
-			System.out.println(id);
-			System.out.println(name);
+			countriesDTO.setCountry_id(rs.getString("country_id"));
+			countriesDTO.setCountry_name(rs.getString("country_name"));
+			countriesDTO.setRegion_id(rs.getInt("region_id"));
 		}
 		DBConnector.disConnect(rs, st, con);//6.자원해제
+		
+		return countriesDTO;
 		
 	}
 		

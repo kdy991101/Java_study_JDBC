@@ -30,7 +30,6 @@ public class RegionsDAO  {
 		while(rs.next()) {
 //		rs.next();//한줄읽기
 			RegionsDTO regionsDTO = new RegionsDTO();
-			regionsDTO = new RegionsDTO();
 			regionsDTO.setRegion_id(rs.getInt("Region_id"));
 			regionsDTO.setRegion_name(rs.getString("Region_name"));
 			ar.add(regionsDTO);
@@ -61,11 +60,11 @@ public class RegionsDAO  {
 		
 		
 		ResultSet rs = st.executeQuery();//5
+		
 		if(rs.next()) {
-			regionsDTO = new RegionsDTO();
-			
-			
-			regionsDTO.setRegion_id(rs.getInt(1));
+			regionsDTO = new RegionsDTO();		
+			int rid = rs.getInt(1);
+			regionsDTO.setRegion_id(rid);
 			regionsDTO.setRegion_name(rs.getString(2));
 //			int rid = rs.getInt(1);
 //			String rname = rs.getString(2);

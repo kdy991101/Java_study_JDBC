@@ -29,6 +29,32 @@ public class CountriesDAO {
 			System.out.println(name);
 			System.out.println(rid);
 		}
+		DBConnector.disConnect(rs, st, con);//6.자원해제
+		}
 	
+	//countries_id
+//	public void getDetail() throw Exception{
+	
+	public void getDetail(String country_id) throws Exception{
+		Connection con = DBConnector.getConnection();
+		
+		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_ID = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, country_id);
+		
+		ResultSet rs = st.executeQuery();
+		if(rs.next()) {
+			String id = rs.getString("country_id");
+			String name = rs.getString("country_name");
+			System.out.println(id);
+			System.out.println(name);
+		}
+		DBConnector.disConnect(rs, st, con);//6.자원해제
+		
 	}
-}
+		
+		
+	}
+

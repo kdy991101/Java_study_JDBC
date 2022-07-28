@@ -32,20 +32,42 @@ public class TestMain {
 		
 		//====================regiones
 //		try {
-//			ArrayList<RegionsDTO> ar = regionsDAO.getList();
-//			regionsView.view(ar);
+////			ArrayList<RegionsDTO> ar = regionsDAO.getList();
+////			regionsView.view(ar);
+//			RegionsDTO regionsDTO = new RegionsDTO();
+//			regionsDTO.setRegion_id(6);
+//			regionsDTO.setRegion_name("Mars");
+//			int result = regionsDAO.setRegion(regionsDTO);
+//			//1이면 성공
+//			//0이면 실패
+//			if(result > 0) {
+//				System.out.println("성공");
+//			}else {
+//				System.out.println("실패");
+//			}
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 		//==============countries=================
-//		try {
+		try {
 //			ArrayList<CountriesDTO> ar = countriesDAO.getList();
 //			countriesView.view(ar);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+			CountriesDTO countriesDTO = new CountriesDTO();
+			countriesDTO.setCountry_id("KD");
+			countriesDTO.setCountry_name("DOYOUNG");
+			countriesDTO.setRegion_id(3);
+			int result = countriesDAO.setCountry(countriesDTO);
+			
+			if(result >0) {
+				System.out.println("성공");
+			}else {
+				System.out.println("실패");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//================departments=============
 //		try {
 //			ArrayList<DepartmentsDTO> ar = departmentsDAO.getList();
@@ -55,13 +77,14 @@ public class TestMain {
 //			e.printStackTrace();
 //		}
 		//======================employees=============
-		try {
-			ArrayList<EmployeesDTO> ar = employeesDAO.getList();
-			employeesView.view(ar);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			ArrayList<EmployeesDTO> ar = employeesDAO.getList();
+////			employeesView.view(ar);
+//			employeesDAO.getSalaryInfo();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		

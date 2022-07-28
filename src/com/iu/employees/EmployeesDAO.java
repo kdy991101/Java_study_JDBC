@@ -9,6 +9,33 @@ import com.iu.util.DBConnector;
 
 public class EmployeesDAO {
 	
+	public void getSalaryInfo() throws Exception{//7-28
+		
+		Connection con = DBConnector.getConnection();//연결
+		
+		String sql = "SELECT SUM(SALARY), AVG(SALARY),MAX(SALARY) AS MAX FROM EMPLOYEES";//SQL문
+		
+		PreparedStatement st = con.prepareStatement(sql);//미리전송
+		
+		ResultSet rs = st.executeQuery();//최종 전송 후 결과 처리
+		
+		//데이터가 무조건 온다면 if문의 의미가 없기에 rs.next();만 선언해도 ㄱㅊ
+		if(rs.next()) {
+			//데이터가 있으면 꺼내자
+			int sum = rs.getInt("sum(salary)");
+			double avg = rs.getDouble(2);
+			int max = rs.getInt("MAX"); 
+			System.out.println(sum);
+			System.out.println(avg);
+			System.out.println(max);
+		}
+		
+		
+		
+		DBConnector.disConnect(rs, st, con);//자원 해제
+		
+	}
+	
 	public ArrayList<EmployeesDTO> getList() throws Exception{
 		ArrayList<EmployeesDTO> ar = new ArrayList<>();
 		

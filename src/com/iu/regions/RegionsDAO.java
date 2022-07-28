@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import com.iu.util.DBConnector;
 
 public class RegionsDAO  {
-	
+
 	public ArrayList<RegionsDTO> getList() throws Exception{
 		ArrayList<RegionsDTO> ar = new ArrayList<>();
 	
@@ -73,6 +73,28 @@ public class RegionsDAO  {
 		}
 		DBConnector.disConnect(rs, st, con);//6.자원해제
 		return regionsDTO;
+		
+	}
+	
+	public int setRegion(RegionsDTO regionsDTO)throws Exception{
+		//3.regions에 데이커를 추가
+
+		Connection con = DBConnector.getConnection();
+		
+		String sql = "INSERT INTO REGIONS VALUES(?,?)";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, regionsDTO.getRegion_id());
+		st.setString(2, regionsDTO.getRegion_name());
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return result;
+		
+		
 		
 	}
 }

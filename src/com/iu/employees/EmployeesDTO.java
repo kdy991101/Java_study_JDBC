@@ -1,5 +1,7 @@
 package com.iu.employees;
 
+import java.sql.Date;
+
 public class EmployeesDTO {
 	
 	private Integer emplotee_id;
@@ -7,11 +9,11 @@ public class EmployeesDTO {
 	private String last_name;
 	private String email;
 	private String phone_number;
-	private Integer hire_date;
+	private Date hire_date;
 	private String job_id;
 	private Integer salary;
-	private String commission_pct;
-	private Integer manager;
+	private Double commission_pct;
+	private Integer manager_id;
 	private Integer department_id;
 	
 	public Integer getEmplotee_id() {
@@ -44,10 +46,10 @@ public class EmployeesDTO {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	public Integer getHire_date() {
+	public Date getHire_date() {
 		return hire_date;
 	}
-	public void setHire_date(Integer hire_date) {
+	public void setHire_date(Date hire_date) {
 		this.hire_date = hire_date;
 	}
 	public String getJob_id() {
@@ -62,17 +64,17 @@ public class EmployeesDTO {
 	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
-	public String getCommission_pct() {
+	public Double getCommission_pct() {
 		return commission_pct;
 	}
-	public void setCommission_pct(String commission_pct) {
+	public void setCommission_pct(Double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 	public Integer getManager() {
-		return manager;
+		return manager_id;
 	}
-	public void setManager(Integer manager) {
-		this.manager = manager;
+	public void setManager_id(Integer manager) {
+		this.manager_id = manager_id;
 	}
 	public Integer getDepartment_id() {
 		return department_id;

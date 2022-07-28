@@ -27,11 +27,11 @@ public class EmployeesDAO {
 			employeesDTO.setLast_name(rs.getString("last_name"));
 			employeesDTO.setEmail(rs.getString("email"));
 			employeesDTO.setPhone_number(rs.getString("phone_number"));
-			employeesDTO.setHire_date(rs.getInt("hire_date"));
+			employeesDTO.setHire_date(rs.getDate("hire_date"));
 			employeesDTO.setJob_id(rs.getString("job_id"));
 			employeesDTO.setSalary(rs.getInt("salary"));
-			employeesDTO.setCommission_pct(rs.getString("commission_pct"));
-			employeesDTO.setManager(rs.getInt("manager_id"));
+			employeesDTO.setCommission_pct(rs.getDouble("commission_pct"));
+			employeesDTO.setManager_id(rs.getInt("manager_id"));
 			employeesDTO.setDepartment_id(rs.getInt("department_id"));
 			ar.add(employeesDTO);
 		}
@@ -58,11 +58,11 @@ public class EmployeesDAO {
 			employeesDTO.setLast_name(rs.getString("last_name"));
 			employeesDTO.setEmail(rs.getString("email"));
 			employeesDTO.setPhone_number(rs.getString("phone_number"));
-			employeesDTO.setHire_date(rs.getInt("hire_date"));
+			employeesDTO.setHire_date(rs.getDate("hire_date"));
 			employeesDTO.setJob_id(rs.getString("job_id"));
 			employeesDTO.setSalary(rs.getInt("salary"));
-			employeesDTO.setCommission_pct(rs.getString("commission_pct"));
-			employeesDTO.setManager(rs.getInt("manager_id"));
+			employeesDTO.setCommission_pct(rs.getDouble("commission_pct"));
+			employeesDTO.setManager_id(rs.getInt("manager_id"));
 			employeesDTO.setDepartment_id(rs.getInt("department_id"));
 			
 		}
